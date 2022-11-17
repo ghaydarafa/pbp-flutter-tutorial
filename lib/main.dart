@@ -1,5 +1,7 @@
-import 'package:pbp_flutter_tutorial/form.dart';
+import 'package:pbp_flutter_tutorial/page/form.dart';
 import 'package:flutter/material.dart';
+import 'package:pbp_flutter_tutorial/model/to_do.dart';
+import 'package:pbp_flutter_tutorial/page/to_do_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,38 +54,47 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-    title: Text(widget.title),
-  ),
-  // Menambahkan drawer menu
-  drawer: Drawer(
-      child: Column(
+    appBar: AppBar(
+        title: const Text('To Do'),
+    ),
+    drawer: Drawer(
+        child: Column(
         children: [
-          // Menambahkan clickable menu
-          ListTile(
+            // Menambahkan clickable menu
+            ListTile(
             title: const Text('Counter'),
             onTap: () {
-              // Route menu ke halaman utama
-              Navigator.pushReplacement(
+                // Route menu ke halaman utama
+                Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const MyHomePage()),
-              );
+                MaterialPageRoute(builder: (context) => const MyApp()),
+                );
             },
-          ),
-          ListTile(
+            ),
+            ListTile(
             title: const Text('Form'),
             onTap: () {
-              // Route menu ke halaman form
-              Navigator.pushReplacement(
+                // Route menu ke halaman form
+                Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const MyFormPage()),
-              );
+                );
             },
-          ),
+            ),
+            ListTile(
+            title: const Text('ToDo'),
+            onTap: () {
+                // Route menu ke halaman to do
+                Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const ToDoPage()),
+                );
+            },
+            ),
         ],
-      ),
+        ),
     ),
-      body: Center(
+    body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
@@ -117,7 +128,6 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+      ),);
   }
 }
